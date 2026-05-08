@@ -34,10 +34,14 @@ def busqueda_binaria(arr: list[int], objetivo: int,
 
     # PASO BASE
     # TODO: si lo > hi, el subarreglo está vacío → devuelve -1
+    if lo > hi:
+        return -1
 
     mid = (lo + hi) // 2
 
     # TODO: si arr[mid] == objetivo, devuelve mid
+    if arr[mid] == objeto:
+        return mid
 
     # HIPÓTESIS INDUCTIVA:
     # Supongo que busqueda_binaria(arr, objetivo, ...) devuelve correctamente
@@ -46,6 +50,10 @@ def busqueda_binaria(arr: list[int], objetivo: int,
     # PASO RECURSIVO
     # TODO: si objetivo < arr[mid], busca en la mitad izquierda (lo..mid-1)
     # TODO: si objetivo > arr[mid], busca en la mitad derecha  (mid+1..hi)
+    if objetivo < arr[mid]:
+        return busqueda_binaria (arr, objetivo, lo, mid -1)
+    else 
+        return busqueda_binaria (arr, objetivo, mid + 1, hi)
 
 
 # ---------------------------------------------------------------------------
