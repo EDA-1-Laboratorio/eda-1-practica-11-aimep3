@@ -1,3 +1,4 @@
+
 """
 Práctica: Diseño de algoritmos recursivos
 Módulo  : Búsqueda binaria recursiva
@@ -33,14 +34,14 @@ def busqueda_binaria(arr: list[int], objetivo: int,
         hi = len(arr) - 1
 
     # PASO BASE
-    # TODO: si lo > hi, el subarreglo está vacío → devuelve -1
+    # Si lo > hi, el subarreglo está vacío → devuelve -1
     if lo > hi:
         return -1
 
     mid = (lo + hi) // 2
 
-    # TODO: si arr[mid] == objetivo, devuelve mid
-    if arr[mid] == objeto:
+    # Si arr[mid] == objetivo, devuelve mid
+    if arr[mid] == objetivo:
         return mid
 
     # HIPÓTESIS INDUCTIVA:
@@ -48,12 +49,12 @@ def busqueda_binaria(arr: list[int], objetivo: int,
     # el índice del objetivo en el subarreglo indicado, o -1 si no existe.
 
     # PASO RECURSIVO
-    # TODO: si objetivo < arr[mid], busca en la mitad izquierda (lo..mid-1)
-    # TODO: si objetivo > arr[mid], busca en la mitad derecha  (mid+1..hi)
+    # Si objetivo < arr[mid], busca en la mitad izquierda (lo..mid-1)
+    # Si objetivo > arr[mid], busca en la mitad derecha  (mid+1..hi)
     if objetivo < arr[mid]:
-        return busqueda_binaria (arr, objetivo, lo, mid -1)
-    else 
-        return busqueda_binaria (arr, objetivo, mid + 1, hi)
+        return busqueda_binaria(arr, objetivo, lo, mid - 1)
+    else:
+        return busqueda_binaria(arr, objetivo, mid + 1, hi)
 
 
 # ---------------------------------------------------------------------------
@@ -73,14 +74,25 @@ def busqueda_binaria_conteo(arr: list[int], objetivo: int,
         print(f"Índice: {idx}, comparaciones: {conteo[0]}")
     """
     # PASO BASE
-    # TODO
+    if lo > hi:
+        return -1
 
     mid = (lo + hi) // 2
 
     conteo[0] += 1          # comparación con arr[mid]
-    # TODO: si arr[mid] == objetivo ...
+    
+    if arr[mid] == objetivo:
+        return mid
+    
+    # HIPÓTESIS INDUCTIVA
+    # Supongo que las llamadas a los subarreglos sumarán correctamente 
+    # las comparaciones adicionales a la lista 'conteo'.
 
-    # TODO: paso recursivo (no olvides pasar 'conteo')
+    # PASO RECURSIVO (no olvides pasar 'conteo')
+    if objetivo < arr[mid]:
+        return busqueda_binaria_conteo(arr, objetivo, lo, mid - 1, conteo)
+    else:
+        return busqueda_binaria_conteo(arr, objetivo, mid + 1, hi, conteo)
 
 
 # ---------------------------------------------------------------------------
