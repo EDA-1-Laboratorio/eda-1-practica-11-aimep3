@@ -1,3 +1,5 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/u-RYJRjY)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=23860031&assignment_repo_type=AssignmentRepo)
 # Guía práctica: Diseño de algoritmos recursivos
 
 ## Objetivo general
@@ -582,7 +584,7 @@ vistos en clase:
 | Merge sort | Divide y vencerás | $T(n) = 2T(n/2) + O(n)$ | $O(n \log n)$ | $O(n \log n)$ |
 | Búsqueda binaria | Divide y vencerás | $T(n) = T(n/2) + O(1)$ | $O(\log n)$ | $O(1)$ |
 | Quick sort (pivote fijo) | Divide y vencerás | $T(n) = T(n-1) + O(n)$ | $O(n^2)$ | $O(n \log n)$ |
-| Quick sort (pivote aleatorio) | Divide y vencerás | — | $O(n^2)$ (improbable) | $O(n \log n)$ esperado |
+| Quick sort (pivote aleatorio) | Divide y vencerás | $T(n)=2T(n/2)+O(n)$* | $O(n^2)$ (improbable) | $O(n \log n)$ esperado |
 
 ### 3.2 Preguntas de reflexión final (responder en el reporte)
 
@@ -626,6 +628,18 @@ recurrencia? ¿Es mejor o igual que el algoritmo iterativo?
 **Opción C — Palíndromo recursivo:**  
 Determina si una cadena es palíndromo sin ciclos. ¿Cuándo es el paso base? ¿Cómo
 reduces el problema?
+
+Opción A — Potencia rápida:Calcular $x^n$ en tiempo $O(\log n)$ usando la identidad $x^n=(x^{n/2})^2$ si $n$ es par.
+Diseño del algoritmo:
+Paso base: ¿Cuándo es tan sencilla la entrada que la respuesta es inmediata? El caso base ocurre cuando la potencia es cero. Si $n=0$, devolvemos $1$ (ya que todo número elevado a la $0$ es $1$).
+Hipótesis inductiva: Supongamos que la llamada recursiva a la función potencia(x, n // 2) calcula y devuelve correctamente el valor de $x^{\lfloor n/2 \rfloor}$.
+Paso recursivo: ¿Cómo usamos la hipótesis para resolver el problema completo?
+Primero, llamamos a la recursión para calcular la mitad de la potencia: mitad = potencia(x, n // 2).
+Si $n$ es par, significa que la identidad se cumple perfectamente, por lo que combinamos multiplicando el resultado por sí mismo: devolvemos mitad * mitad.
+Si $n$ es impar, significa que sobra un factor de la base, por lo que multiplicamos por la base una vez más para completar la potencia: devolvemos x * mitad * mitad.
+Relación de recurrencia: En cada llamada recursiva estamos reduciendo el tamaño del problema a la mitad ($n/2$). Las operaciones para verificar si la potencia es par y realizar las multiplicaciones toman un tiempo constante $O(1)$. Por lo tanto, la relación de recurrencia en el peor caso es:
+T(n) = T(n/2) + O(1)
+Resolviendo esta recurrencia, se demuestra que el algoritmo tiene una complejidad temporal de $O(\log n)$.
 
 ---
 
