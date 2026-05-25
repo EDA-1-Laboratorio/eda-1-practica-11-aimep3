@@ -584,7 +584,7 @@ vistos en clase:
 | Merge sort | Divide y vencerás | $T(n) = 2T(n/2) + O(n)$ | $O(n \log n)$ | $O(n \log n)$ |
 | Búsqueda binaria | Divide y vencerás | $T(n) = T(n/2) + O(1)$ | $O(\log n)$ | $O(1)$ |
 | Quick sort (pivote fijo) | Divide y vencerás | $T(n) = T(n-1) + O(n)$ | $O(n^2)$ | $O(n \log n)$ |
-| Quick sort (pivote aleatorio) | Divide y vencerás | — | $O(n^2)$ (improbable) | $O(n \log n)$ esperado |
+| Quick sort (pivote aleatorio) | Divide y vencerás | $T(n)=2T(n/2)+O(n)$* | $O(n^2)$ (improbable) | $O(n \log n)$ esperado |
 
 ### 3.2 Preguntas de reflexión final (responder en el reporte)
 
