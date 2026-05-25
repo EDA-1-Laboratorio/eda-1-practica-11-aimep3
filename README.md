@@ -629,7 +629,17 @@ recurrencia? ¿Es mejor o igual que el algoritmo iterativo?
 Determina si una cadena es palíndromo sin ciclos. ¿Cuándo es el paso base? ¿Cómo
 reduces el problema?
 
-Opción A — Potencia rápida:Calcular $x^n$ en tiempo $O(\log n)$ usando la identidad $x^n=(x^{n/2})^2$ si $n$ es par.Diseño del algoritmo:Paso base: ¿Cuándo es tan sencilla la entrada que la respuesta es inmediata? El caso base ocurre cuando la potencia es cero. Si $n=0$, devolvemos $1$ (ya que todo número elevado a la $0$ es $1$).Hipótesis inductiva: Supongamos que la llamada recursiva a la función potencia(x, n // 2) calcula y devuelve correctamente el valor de $x^{\lfloor n/2 \rfloor}$.Paso recursivo: ¿Cómo usamos la hipótesis para resolver el problema completo?Primero, llamamos a la recursión para calcular la mitad de la potencia: mitad = potencia(x, n // 2).Si $n$ es par, significa que la identidad se cumple perfectamente, por lo que combinamos multiplicando el resultado por sí mismo: devolvemos mitad * mitad.Si $n$ es impar, significa que sobra un factor de la base, por lo que multiplicamos por la base una vez más para completar la potencia: devolvemos x * mitad * mitad.Relación de recurrencia: En cada llamada recursiva estamos reduciendo el tamaño del problema a la mitad ($n/2$). Las operaciones para verificar si la potencia es par y realizar las multiplicaciones toman un tiempo constante $O(1)$. Por lo tanto, la relación de recurrencia en el peor caso es:$$T(n) = T(n/2) + O(1)$$Resolviendo esta recurrencia, se demuestra que el algoritmo tiene una complejidad temporal de $O(\log n)$.
+Opción A — Potencia rápida:Calcular $x^n$ en tiempo $O(\log n)$ usando la identidad $x^n=(x^{n/2})^2$ si $n$ es par.
+Diseño del algoritmo:
+Paso base: ¿Cuándo es tan sencilla la entrada que la respuesta es inmediata? El caso base ocurre cuando la potencia es cero. Si $n=0$, devolvemos $1$ (ya que todo número elevado a la $0$ es $1$).
+Hipótesis inductiva: Supongamos que la llamada recursiva a la función potencia(x, n // 2) calcula y devuelve correctamente el valor de $x^{\lfloor n/2 \rfloor}$.
+Paso recursivo: ¿Cómo usamos la hipótesis para resolver el problema completo?
+Primero, llamamos a la recursión para calcular la mitad de la potencia: mitad = potencia(x, n // 2).
+Si $n$ es par, significa que la identidad se cumple perfectamente, por lo que combinamos multiplicando el resultado por sí mismo: devolvemos mitad * mitad.
+Si $n$ es impar, significa que sobra un factor de la base, por lo que multiplicamos por la base una vez más para completar la potencia: devolvemos x * mitad * mitad.
+Relación de recurrencia: En cada llamada recursiva estamos reduciendo el tamaño del problema a la mitad ($n/2$). Las operaciones para verificar si la potencia es par y realizar las multiplicaciones toman un tiempo constante $O(1)$. Por lo tanto, la relación de recurrencia en el peor caso es:
+T(n) = T(n/2) + O(1)
+Resolviendo esta recurrencia, se demuestra que el algoritmo tiene una complejidad temporal de $O(\log n)$.
 
 ---
 
